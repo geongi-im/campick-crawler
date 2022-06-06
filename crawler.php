@@ -17,7 +17,7 @@ function sendTelegram ($message, $chatId) {
 }
 
 function getSamrak ($date, $chatId) {
-    $url = 'https://nakdongcamping.com/reservation/real_time?user_id=gg8820&site_id=&site_type=&dis_rate=0&user_dis_rate=&resdate='.$date.'&schGugun=1&price=0&bagprice=2000&allprice=0';
+    $url = 'https://nakdongcamping.com/reservation/real_time?user_id=userid&site_id=&site_type=&dis_rate=0&user_dis_rate=&resdate='.$date.'&schGugun=1&price=0&bagprice=2000&allprice=0';
     $snoopy = new Snoopy;
     $snoopy->fetch($url);
     $file = $snoopy->results;
@@ -28,7 +28,7 @@ function getSamrak ($date, $chatId) {
 
     for($i=0; $i<$count; $i++){
         $site = strip_tags($a1[1][$i].$a1[0][$i]);
-        $message = "[삼락생태공원 오토캠핑장]\n날짜 : ".$date."\n사이트 : ".$site."\n바로가기 : https://nakdongcamping.com/reservation/real_time?user_id=gg8820&site_id=&site_type=&dis_rate=0&user_dis_rate=&resdate=".$date."&schGugun=1&price=0&bagprice=2000&allprice=0";
+        $message = "[삼락생태공원 오토캠핑장]\n날짜 : ".$date."\n사이트 : ".$site."\n바로가기 : https://nakdongcamping.com/reservation/real_time?user_id=uesrid&site_id=&site_type=&dis_rate=0&user_dis_rate=&resdate=".$date."&schGugun=1&price=0&bagprice=2000&allprice=0";
         sendTelegram($message, $chatId);
     }
 }
@@ -99,7 +99,6 @@ function getHealing ($date, $continueDay, $chatId) {
     $snoopy->fetch($url);
     $file = $snoopy->results;
 
-    //$match1 = '/\''.$date.'\', \'(.*)\'\)"  class="selOn"/';
     $match1 = '/\''.$date.'\', \'(.*)\'\)" id="book_link" class="selOn"/';
     preg_match_all($match1, $file, $a1);
 
